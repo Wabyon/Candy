@@ -10,7 +10,7 @@
             d:DataContext="{d:DesignInstance Type=vm:ApplicationViewModel}"
             d:DesignHeight="80" d:DesignWidth="800">
 
-    <ButtonBase.Style>
+    <!--<ButtonBase.Style>
         <Style TargetType="local:ApplicationListItem">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsApplicationMissing.Value}" Value="False">
@@ -41,7 +41,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-    </ButtonBase.Style>
+    </ButtonBase.Style>-->
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Click">
@@ -91,6 +91,10 @@
                             <DataTrigger Binding="{Binding HasUpdate.Value}" Value="False">
                                 <Setter Property="Foreground" Value="#A6D8A3" />
                                 <Setter Property="Text" Value="お使いのバージョンは最新です" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsApplicationMissing.Value}" Value="False">
+                                <Setter Property="Foreground" Value="Red" />
+                                <Setter Property="Text" Value="ファイルが見つかりません" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>

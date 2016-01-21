@@ -82,20 +82,35 @@
         </StackPanel>
 
         <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  BorderBrush="{StaticResource AccentColorBrush}" BorderThickness="1">
-            <TextBlock Text="{Binding ReleaseNote.Value, Mode=OneWay}" Padding="16" />
+            <TextBlock Padding="16" >
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsApplicationMissing.Value}" Value="True">
+                                <Setter Property="Text" Value="{Binding ReleaseNote.Value, Mode=OneWay}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsApplicationMissing.Value}" Value="False">
+                                <Setter Property="Foreground" Value="Red" />
+                                <Setter Property="Text" Value="登録されているパスにファイルが存在しません。&#10;
+下の[登録解除]ボタンより登録を解除した後、再インストールしてください。" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
         </Border>
 
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            
+
             <Button Content="アプリケーションを起動" Style="{StaticResource CommandButtonStyle}" 
                     Command="{Binding ExecuteCommand}"/>
-            
+
             <Button Content="アップデート" Style="{StaticResource CommandButtonStyle}" 
                     Command="{Binding UpdateCommand}" />
 
             <Button Content="登録解除" Style="{StaticResource CommandButtonStyle}" 
                     Command="{Binding RemoveCommand}" />
-            
+
         </StackPanel>
 
     </Grid>
