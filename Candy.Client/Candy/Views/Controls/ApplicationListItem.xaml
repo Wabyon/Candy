@@ -10,39 +10,6 @@
             d:DataContext="{d:DesignInstance Type=vm:ApplicationViewModel}"
             d:DesignHeight="80" d:DesignWidth="800">
 
-    <!--<ButtonBase.Style>
-        <Style TargetType="local:ApplicationListItem">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding IsApplicationMissing.Value}" Value="False">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="local:ApplicationListItem">
-                                <Grid HorizontalAlignment="Stretch" Height="100">
-                                    <Grid Margin="6">
-                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">
-                                            <Run Text="{Binding InstalledPath.Value}" /><Run Text="が見つかりません" />
-                                        </TextBlock>
-                                        <Rectangle Stroke="Red" StrokeThickness="1" />
-                                        <Line X1="0" 
-                                              Y1="0" 
-                                              X2="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualWidth}"
-                                              Y2="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight}"
-                                              Stroke="Red" />
-                                        <Line X1="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualWidth}"
-                                              Y1="0" 
-                                              X2="0"
-                                              Y2="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight}"
-                                              Stroke="Red" />
-                                    </Grid>
-                                </Grid>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-    </ButtonBase.Style>-->
-
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Click">
             <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.ShowDetailsCommand}"
