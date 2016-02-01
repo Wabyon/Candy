@@ -86,10 +86,10 @@
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsApplicationMissing.Value}" Value="True">
+                            <DataTrigger Binding="{Binding IsApplicationMissing.Value}" Value="False">
                                 <Setter Property="Text" Value="{Binding ReleaseNote.Value, Mode=OneWay}" />
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding IsApplicationMissing.Value}" Value="False">
+                            <DataTrigger Binding="{Binding IsApplicationMissing.Value}" Value="True">
                                 <Setter Property="Foreground" Value="Red" />
                                 <Setter Property="Text" Value="登録されているパスにファイルが存在しません。&#10;
 下の[登録解除]ボタンより登録を解除した後、再インストールしてください。" />

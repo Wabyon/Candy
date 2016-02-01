@@ -59,7 +59,7 @@
                                 <Setter Property="Foreground" Value="#A6D8A3" />
                                 <Setter Property="Text" Value="お使いのバージョンは最新です" />
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding IsApplicationMissing.Value}" Value="False">
+                            <DataTrigger Binding="{Binding IsApplicationMissing.Value}" Value="True">
                                 <Setter Property="Foreground" Value="Red" />
                                 <Setter Property="Text" Value="ファイルが見つかりません" />
                             </DataTrigger>
