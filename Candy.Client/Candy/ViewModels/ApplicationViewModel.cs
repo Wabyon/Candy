@@ -51,7 +51,7 @@ namespace Candy.Client.ViewModels
             DisplayName = app.ObserveProperty(x => x.DisplayName).ToReactiveProperty();
             Definition = app.ObserveProperty(x => x.Definition).ToReactiveProperty();
             InstalledPath = app.ObserveProperty(x => x.InstalledPath).ToReactiveProperty();
-            IsApplicationMissing = InstalledPath.Select(File.Exists).ToReactiveProperty();
+            IsApplicationMissing = InstalledPath.Select(path => !File.Exists(path)).ToReactiveProperty();
 
             var currentVersion = app.ObserveProperty(x => x.ApplicationVersion).ToReactiveProperty();
 
