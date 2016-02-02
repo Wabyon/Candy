@@ -108,13 +108,13 @@
         </Grid.RowDefinitions>
 
         <mahapps:ProgressRing Grid.Row="0" IsActive="{Binding IsProgressActive.Value}"/>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" MinHeight="20" Grid.Row="0">
-            <ItemsControl Grid.Row="0" ItemsSource="{Binding Applications}" Padding="6"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ItemsControl.Resources>
-                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
-                </ItemsControl.Resources>
-                <ItemsControl.Template>
-                    <ControlTemplate>
+        <ItemsControl Grid.Row="0" ItemsSource="{Binding Applications}" Padding="6"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+            </ItemsControl.Resources>
+            <ItemsControl.Template>
+                <ControlTemplate>
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
                         <StackPanel>
                             <ItemsPresenter/>
                             <Button Style="{StaticResource AddItemButtonStyle}" Height="40"
@@ -147,15 +147,15 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
-                    </ControlTemplate>
-                </ItemsControl.Template>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <local:ApplicationListItem />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ItemsControl.Template>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:ApplicationListItem />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 
     <mahapps:MetroWindow.Flyouts>
