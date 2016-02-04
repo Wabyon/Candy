@@ -108,45 +108,46 @@
         </Grid.RowDefinitions>
 
         <mahapps:ProgressRing Grid.Row="0" IsActive="{Binding IsProgressActive.Value}"/>
-
         <ItemsControl Grid.Row="0" ItemsSource="{Binding Applications}" Padding="6"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ItemsControl.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
             </ItemsControl.Resources>
             <ItemsControl.Template>
                 <ControlTemplate>
-                    <StackPanel>
-                        <ItemsPresenter/>
-                        <Button Style="{StaticResource AddItemButtonStyle}" Height="40"
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <ItemsPresenter/>
+                            <Button Style="{StaticResource AddItemButtonStyle}" Height="40"
                                 Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.RegisterApplicationCommand}">
-                            <StackPanel Orientation="Horizontal">
-                                <Rectangle Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Width="22" Height="18">
-                                    <Rectangle.OpacityMask>
-                                        <VisualBrush Visual="{StaticResource appbar_app_plus}" Stretch="Fill" />
-                                    </Rectangle.OpacityMask>
-                                </Rectangle>
-                                <TextBlock Margin="6,2,0,0" FontSize="14">
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Width="22" Height="18">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Visual="{StaticResource appbar_app_plus}" Stretch="Fill" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <TextBlock Margin="6,2,0,0" FontSize="14">
                                     インストール済みアプリケーションの追加
-                                </TextBlock>
-                            </StackPanel>
-                        </Button>
-                        <TextBlock Margin="0,6,0,6" FontSize="10" Foreground="#CCCCCC" HorizontalAlignment="Center" TextAlignment="Center">
+                                    </TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <TextBlock Margin="0,6,0,6" FontSize="10" Foreground="#CCCCCC" HorizontalAlignment="Center" TextAlignment="Center">
                             または
-                        </TextBlock>
-                        <Button Style="{StaticResource AddItemButtonStyle}" Height="32"
+                            </TextBlock>
+                            <Button Style="{StaticResource AddItemButtonStyle}" Height="32"
                                 Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.InstallApplicationCommand}">
-                            <StackPanel Orientation="Horizontal">
-                                <Rectangle Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Width="20" Height="14">
-                                    <Rectangle.OpacityMask>
-                                        <VisualBrush Visual="{StaticResource appbar_cloud_download}" Stretch="Fill" />
-                                    </Rectangle.OpacityMask>
-                                </Rectangle>
-                                <TextBlock Margin="6,2,0,0" FontSize="12">
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Width="20" Height="14">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Visual="{StaticResource appbar_cloud_download}" Stretch="Fill" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <TextBlock Margin="6,2,0,0" FontSize="12">
                                     アプリケーションをインストール
-                                </TextBlock>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </ScrollViewer>
                 </ControlTemplate>
             </ItemsControl.Template>
             <ItemsControl.ItemTemplate>
@@ -155,7 +156,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-
     </Grid>
 
     <mahapps:MetroWindow.Flyouts>
