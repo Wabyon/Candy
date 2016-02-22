@@ -75,8 +75,12 @@
                 <Run Text="現在のバージョン：" /><Run Text="{Binding Version.Value, Mode=OneWay}" />
             </TextBlock>
 
-            <TextBlock>
+            <TextBlock Margin="0,0,0,4">
                 <Run Text="最新バージョン：" /><Run Text="{Binding LatestVersion.Value, Mode=OneWay}" />
+            </TextBlock>
+
+            <TextBlock Margin="0,0,0,4">
+                <Run Text="開発者：" /><Run Text="{Binding DeveloperName.Value, Mode=OneWay}" />
             </TextBlock>
 
         </StackPanel>
