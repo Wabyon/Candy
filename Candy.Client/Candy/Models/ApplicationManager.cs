@@ -92,7 +92,16 @@ namespace Candy.Client.Models
             var httpClient = new HttpClient();
 
             // アプリケーションの日本語名、説明と更新情報の URL はサービスから取得
-            var response = await httpClient.GetAsync(Settings.ApplicationInformationServiceUrl).ConfigureAwait(false);
+            HttpResponseMessage response = null;
+            try
+            {
+                response = await httpClient.GetAsync(Settings.ApplicationInformationServiceUrl).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                RaiseError(ex.Message + Environment.NewLine + Settings.ApplicationInformationServiceUrl + "へ接続中にエラーが起きました。");
+                return;
+            }
 
             if (response.StatusCode != HttpStatusCode.OK)
             {
