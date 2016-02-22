@@ -18,5 +18,7 @@ namespace Candy.Client.Models
         public string UpdateServiceUrl { get; set; }
         [DataMember(Name = "installUrl")]
         public string InstallUrl { get; set; }
+        [DataMember(Name = "developername")]
+        public string DeveloperName { get; set; }
     }
 }
