@@ -34,6 +34,7 @@ namespace Candy.Client.Models
         private string _id;
         private string _displayName;
         private string _definition;
+        private string _developerName;
         private Uri _installUrl;
         private Version _applicationVersion;
         private UpdateSummary _latest;
@@ -66,6 +67,14 @@ namespace Candy.Client.Models
         {
             get { return _definition; }
             private set { SetValue(ref _definition, value); }
+        }
+        /// <summary>
+        /// このアプリケーションの開発名を取得します。
+        /// </summary>
+        public string DeveloperName
+        {
+            get { return _developerName; }
+            private set { SetValue(ref _developerName, value); }
         }
         /// <summary>
         /// このアプリケーションの実行ファイル (*.exe) のパスを取得します。
@@ -245,6 +254,7 @@ namespace Candy.Client.Models
                         InstallUrl = new Uri(app.InstallUrl ?? appInfo.DefaultInstallUrl);
                         DisplayName = app.DisplayName;
                         Definition = app.Definition;
+                        DeveloperName = app.DeveloperName;
 
                         await RefreshFileInfoAsync().ConfigureAwait(false);
                     }
