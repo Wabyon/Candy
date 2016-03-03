@@ -14,6 +14,8 @@ namespace Candy.Client.Models
         public string DisplayName { get; set; }
         [DataMember(Name = "definition")]
         public string Definition { get; set; }
+        [DataMember(Name = "developername")]
+        public string DeveloperName { get; set; }
         [DataMember(Name = "updateUrl")]
         public string UpdateServiceUrl { get; set; }
         [DataMember(Name = "installUrl")]
