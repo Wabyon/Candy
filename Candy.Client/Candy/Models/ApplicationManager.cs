@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.IO;
 using System.IO.Compression;
@@ -44,6 +45,13 @@ namespace Candy.Client.Models
         public ObservableSynchronizedCollection<InstalledApplication> Applications
         {
             get { return _applications; }
+        }
+        /// <summary>
+        /// インストール可能なアプリケーションの一覧を取得します。
+        /// </summary>
+        internal IReadOnlyList<ApplicationMetadata> InstallableApplications
+        {
+            get { return new ReadOnlyCollection<ApplicationMetadata>(_appInfo.Applications); }
         }
         /// <summary>
         /// 構成情報を永続化するための <see cref="IStateRepository"/> を取得します。
