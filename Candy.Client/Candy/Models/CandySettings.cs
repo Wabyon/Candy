@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Runtime.Serialization;
 using AutoMapper;
+using Newtonsoft.Json;
 
 namespace Candy.Client.Models
 {
@@ -12,13 +13,13 @@ namespace Candy.Client.Models
 
         public static readonly string DefaultApplicationInformationServiceUrl = ConfigurationManager.AppSettings["candy:DefaultAppService"];
 
-        [DataMember(Name = "appRoot")]
+        [JsonProperty(PropertyName= "appRoot")]
         public string ApplicationRootDirectoryPath
         {
             get { return _applicationRootDirectoryPath; }
             set { SetValue(ref _applicationRootDirectoryPath, value); }
         }
-        [DataMember(Name = "appService")]
+        [JsonProperty(PropertyName= "appService")]
         public string ApplicationInformationServiceUrl
         {
             get { return _applicationInformationServiceUrl; }

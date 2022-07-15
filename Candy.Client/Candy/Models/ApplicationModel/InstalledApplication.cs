@@ -16,7 +16,7 @@ namespace Candy.Client.Models
     /// インストール済みのアプリケーションを表します。
     /// </summary>
     [DataContract]
-    public class InstalledApplication : NotificationObject, ISerializable
+    public class InstalledApplication : NotificationObject
     {
         /// <summary>
         /// インストール先パスはイミュータブルに設計されています。この値を変更する必要がある場合、新しいインスタンスを作成することを検討してください。
@@ -79,6 +79,7 @@ namespace Candy.Client.Models
         /// <summary>
         /// このアプリケーションの実行ファイル (*.exe) のパスを取得します。
         /// </summary>
+        [JsonProperty(PropertyName="path")]
         public string InstalledPath
         {
             get { return _installedPath; }
@@ -294,15 +295,6 @@ namespace Candy.Client.Models
 
                 Latest = JsonConvert.DeserializeObject<UpdateSummary>(latest);
             }
-        }
-        /// <summary>
-        /// <see cref="T:System.Runtime.Serialization.SerializationInfo"/> に、オブジェクトをシリアル化するために必要なデータを設定します。
-        /// </summary>
-        /// <param name="info">データを読み込む先の <see cref="T:System.Runtime.Serialization.SerializationInfo"/>。</param><param name="context">このシリアル化のシリアル化先 (<see cref="T:System.Runtime.Serialization.StreamingContext"/> を参照)。</param><exception cref="T:System.Security.SecurityException">呼び出し元に、必要なアクセス許可がありません。</exception>
-        public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            // path だけ記録して、残りは次回起動時に再読込する
-            info.AddValue("path", InstalledPath);
         }
         /// <summary>
         /// 

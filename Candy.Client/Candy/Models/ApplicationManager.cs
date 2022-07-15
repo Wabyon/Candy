@@ -35,12 +35,12 @@ namespace Candy.Client.Models
         /// <summary>
         /// 
         /// </summary>
-        [DataMember(Name = "settings")]
+        [JsonProperty(PropertyName= "settings")]
         public CandySettings Settings { get; private set; }
         /// <summary>
         /// インストールされているアプリケーションの一覧を取得します。
         /// </summary>
-        [DataMember(Name = "apps")]
+        [JsonProperty(PropertyName="apps")]
         public ObservableSynchronizedCollection<InstalledApplication> Applications
         {
             get { return _applications; }
@@ -48,7 +48,7 @@ namespace Candy.Client.Models
         /// <summary>
         /// 構成情報を永続化するための <see cref="IStateRepository"/> を取得します。
         /// </summary>
-        [IgnoreDataMember]
+        [JsonIgnore]
         public IStateRepository Repository
         {
             get { return _repository; }
