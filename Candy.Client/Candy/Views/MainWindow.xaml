@@ -24,6 +24,13 @@
     <mahapps:MetroWindow.RightWindowCommands>
         <mahapps:WindowCommands Visibility="{Binding ShowWindowRightCommands.Value, Converter={StaticResource BooleanToVisibilityConverter}}">
 
+            <Button Command="{Binding ShowInstallableApplicationsCommand}">
+                <Rectangle Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Width="14" Height="16">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_list}" Stretch="Fill" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
             <Button>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
@@ -70,6 +77,9 @@
         </l:InteractionMessageTrigger>
         <l:InteractionMessageTrigger MessageKey="ShowHelp" Messenger="{Binding Messenger}">
             <l:TransitionInteractionMessageAction WindowType="v:HelpWindow" Mode="Modal" InvokeActionOnlyWhenWindowIsActive="False" />
+        </l:InteractionMessageTrigger>
+        <l:InteractionMessageTrigger MessageKey="ShowInstallableApplications" Messenger="{Binding Messenger}">
+            <l:TransitionInteractionMessageAction WindowType="v:InstallableApplicationsWindow" Mode="Modal" InvokeActionOnlyWhenWindowIsActive="False" />
         </l:InteractionMessageTrigger>
     </i:Interaction.Triggers>
 

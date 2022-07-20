@@ -61,6 +61,10 @@ namespace Candy.Client.ViewModels
         /// <summary>
         /// 
         /// </summary>
+        public ReactiveCommand ShowInstallableApplicationsCommand { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public ReactiveCommand RegisterApplicationCommand { get; private set; }
         /// <summary>
         /// 
@@ -105,6 +109,9 @@ namespace Candy.Client.ViewModels
 
             ShowHelpCommand = new ReactiveCommand();
             ShowHelpCommand.Subscribe(_ => ShowHelp());
+
+            ShowInstallableApplicationsCommand = new ReactiveCommand();
+            ShowInstallableApplicationsCommand.Subscribe(_ => ShowInstallableApplications());
 
             RegisterApplicationCommand = IsProgressActive.Select(x => !x).ToReactiveCommand();
             RegisterApplicationCommand.Subscribe(_ => RegisterApplication());
@@ -163,6 +170,17 @@ namespace Candy.Client.ViewModels
             {
                 MessageKey = "ShowHelp",
                 TransitionViewModel = new HelpViewModel()
+            });
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ShowInstallableApplications()
+        {
+            Messenger.Raise(new TransitionMessage
+            {
+                MessageKey = "ShowInstallableApplications",
+                TransitionViewModel = new InstallableApplicationsViewModel(_manager.InstallableApplications)
             });
         }
         /// <summary>

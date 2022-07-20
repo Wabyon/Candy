@@ -152,6 +152,7 @@
     <Compile Include="Utilities\DisposableExtensions.cs" />
     <Compile Include="Models\UpdateSummary.cs" />
     <Compile Include="Utilities\TaskEx.cs" />
+    <Compile Include="ViewModels\InstallableApplicationsViewModel.cs" />
     <Compile Include="ViewModels\HelpViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\WebsiteViewModel.cs" />
@@ -175,6 +176,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\InstallableApplicationsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\HelpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -196,6 +201,9 @@
       <DependentUpon>SettingsFlyout.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Converters\InvertBooleanConverter.cs" />
+    <Compile Include="Views\InstallableApplicationsWindow.xaml.cs">
+      <DependentUpon>InstallableApplicationsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
     </Compile>
