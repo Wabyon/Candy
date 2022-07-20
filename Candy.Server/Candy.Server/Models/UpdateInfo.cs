@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace Candy.Server.Models
 {
@@ -13,7 +14,7 @@ namespace Candy.Server.Models
         /// <summary>
         /// 更新の一覧を取得します。
         /// </summary>
-        [DataMember(Name = "update")]
+        [JsonProperty(PropertyName = "update")]
         public UpdateSummaryCollection UpdateSummaries
         {
             get { return _updateSummaries; }

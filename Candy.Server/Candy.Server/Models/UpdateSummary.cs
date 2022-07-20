@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
@@ -16,25 +17,25 @@ namespace Candy.Server.Models
         /// <summary>
         /// この更新のバージョンを取得または設定します。
         /// </summary>
-        [DataMember(Name = "version")]
+        [JsonProperty(PropertyName = "version")]
         public Version Version { get; set; }
 
         /// <summary>
         /// この更新がリリースされた日付を取得または設定します。
         /// </summary>
-        [DataMember(Name = "date")]
+        [JsonProperty(PropertyName = "date")]
         public DateTime PublishDate { get; set; }
 
         /// <summary>
         /// この更新がサポートするバージョン（この更新を適用可能な最低バージョン）を取得または設定します。
         /// </summary>
-        [DataMember(Name = "for")]
+        [JsonProperty(PropertyName = "for")]
         public Version SupportedVersion { get; set; }
 
         /// <summary>
         /// この更新の適用を許可する対象のユーザー一覧を取得します。
         /// </summary>
-        [DataMember(Name = "allow")]
+        [JsonProperty(PropertyName = "allow")]
         public ICollection<string> AllowedUserIds
         {
             get { return _allowedUserIds; }
@@ -43,7 +44,7 @@ namespace Candy.Server.Models
         /// <summary>
         /// 削除するファイルの一覧を取得します。
         /// </summary>
-        [DataMember(Name = "remove")]
+        [JsonProperty(PropertyName = "remove")]
         public ICollection<string> RemoveFiles
         {
             get { return _removeFiles; }
@@ -52,13 +53,13 @@ namespace Candy.Server.Models
         /// <summary>
         /// この更新のパッケージ ファイルのパスを取得または設定します。
         /// </summary>
-        [DataMember(Name = "package")]
+        [JsonProperty(PropertyName = "package")]
         public string PackagePath { get; set; }
 
         /// <summary>
         /// この更新の更新内容を取得または設定します。
         /// </summary>
-        [DataMember(Name = "releaseNote")]
+        [JsonProperty(PropertyName = "releaseNote")]
         public string ReleaseNote { get; set; }
     }
 }
