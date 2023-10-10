@@ -122,7 +122,7 @@ namespace Candy.Updater
                 var destPath = Path.Combine(targetDirectoryPath, entry.FullName);
 
                 // 自分自身の場合は確実に書き込み失敗するため無視する（現状は Candy.exe 側で書き換えてもらう想定。将来的には自身で自身をアップデートできるようにしたい＝シャルロッテ方式）
-                if (String.Equals(Assembly.GetEntryAssembly().Location, destPath)) continue;
+                if (entry.FullName.StartsWith(@"Updater/", StringComparison.OrdinalIgnoreCase)) continue;
 
                 var destFile = new FileInfo(destPath);
                 var destDir = new DirectoryInfo(Path.GetDirectoryName(destPath));
