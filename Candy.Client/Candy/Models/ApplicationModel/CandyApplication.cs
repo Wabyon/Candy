@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -67,12 +68,15 @@ namespace Candy.Client.Models
             using (var stream = await client.GetStreamAsync(latest.PackagePath).ConfigureAwait(false))
             using (var archive = new ZipArchive(stream, ZipArchiveMode.Read))
             {
-                var entry = archive.GetEntry("Candy.Updater.exe");
-
-                if (entry != null)
+                // Updater 関連は本体で書き換える(dllの依存が共通している場合、上書きできないため)
+                foreach (var entry in archive.Entries
+                    .Where(r => r.FullName.StartsWith(@"Updater/", StringComparison.OrdinalIgnoreCase)))
                 {
+                    // ディレクトリが存在しない場合はファイル作成時に例外となる
+                    Directory.CreateDirectory(Path.GetDirectoryName(entry.FullName));
+
                     using (var updater = entry.Open())
-                    using (var dest = File.OpenWrite("Candy.Updater.exe"))
+                    using (var dest = new FileStream(entry.FullName, FileMode.OpenOrCreate))
                     {
                         dest.SetLength(0);
                         await updater.CopyToAsync(dest).ConfigureAwait(false);
@@ -89,7 +93,7 @@ namespace Candy.Client.Models
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "Candy.Updater.exe",
+                    FileName = "Updater/Candy.Updater.exe",
                     Arguments = arguments,
                 },
             };
