@@ -41,6 +41,7 @@ namespace Candy.Client.ViewModels
         public ReactiveProperty<string> LatestVersion { get; private set; }
         public ReactiveProperty<string> ReleaseNote { get; set; }
 
+        public ReactiveProperty<bool> CanExecute { get; private set; }
         public ReactiveCommand ExecuteCommand { get; private set; }
         public ReactiveCommand UpdateCommand { get; private set; }
         public ReactiveCommand RemoveCommand { get; private set; }
@@ -76,6 +77,8 @@ namespace Candy.Client.ViewModels
 
             ReleaseNote = Latest.Select(x => x != null ? x.ReleaseNote : "更新情報はありません。")
                                 .ToReactiveProperty();
+
+            CanExecute = app.ObserveProperty(x => x.CanExecute).ToReactiveProperty();
 
             ExecuteCommand = new ReactiveCommand(app.ObserveProperty(x => x.CanExecute));
             ExecuteCommand.Subscribe(_ =>
