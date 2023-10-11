@@ -154,19 +154,26 @@ namespace Candy.Client.Models
             Id = Path.GetFileNameWithoutExtension(InstalledPath);
             CanExecute = File.Exists(InstalledPath);
 
-            FileSystemWatcher = new FileSystemWatcher(Path.GetDirectoryName(InstalledPath), "*.exe")
+            if (CanExecute)
             {
-                EnableRaisingEvents = true
-
-            }.AddTo(CompositeDisposable);
-
-            FileSystemWatcher.Changed += (_, e) =>
-            {
-                if (String.Equals(InstalledPath, e.FullPath, StringComparison.OrdinalIgnoreCase))
+                FileSystemWatcher = new FileSystemWatcher(Path.GetDirectoryName(InstalledPath), "*.exe")
                 {
-                    CanExecute = File.Exists(InstalledPath);
-                }
-            };
+                    EnableRaisingEvents = true
+
+                }.AddTo(CompositeDisposable);
+
+                FileSystemWatcher.Changed += (_, e) =>
+                {
+                    if (String.Equals(InstalledPath, e.FullPath, StringComparison.OrdinalIgnoreCase))
+                    {
+                        CanExecute = File.Exists(InstalledPath);
+                    }
+                };
+            }
+            else
+            {
+                FileSystemWatcher = new FileSystemWatcher();
+            }
         }
 
         /// <summary>
