@@ -93,7 +93,7 @@ namespace Candy.Client.Models
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "Updater/Candy.Updater.exe",
+                    FileName = @"Updater\Candy.Updater.exe",
                     Arguments = arguments,
                 },
             };
