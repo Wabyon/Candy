@@ -32,15 +32,17 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <DocumentationFile>
     </DocumentationFile>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\1447690281_christmas_5.ico</ApplicationIcon>
@@ -286,7 +288,8 @@
   <PropertyGroup>
     <PostBuildEvent>if not exist "$(TargetDir)bin" (mkdir "$(TargetDir)bin")
 move "$(TargetDir)*.dll" "$(TargetDir)\bin" 2&gt;nul
-copy "$(TargetDir)bin\Newtonsoft.Json.dll" "$(TargetDir)Newtonsoft.Json.dll"</PostBuildEvent>
+rd /s /q "$(TargetDir)ja"
+del "$(TargetDir)*.xml"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
