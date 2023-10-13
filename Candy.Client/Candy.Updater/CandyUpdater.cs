@@ -116,8 +116,8 @@ namespace Candy.Updater
         }
         private static async Task UpdateFilesAsync(ZipArchive archive, string targetDirectoryPath)
         {
-            // Length > 0 でファイル（非フォルダ）にしぼる（で正しいのか？）
-            foreach (var entry in archive.Entries.Where(x => x.Length > 0))
+            //フォルダは除外
+            foreach (var entry in archive.Entries.Where(x => x.Name != string.Empty))
             {
                 var destPath = Path.Combine(targetDirectoryPath, entry.FullName);
 
