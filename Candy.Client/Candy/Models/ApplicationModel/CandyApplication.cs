@@ -70,7 +70,8 @@ namespace Candy.Client.Models
             {
                 // Updater 関連は本体で書き換える(dllの依存が共通している場合、上書きできないため)
                 foreach (var entry in archive.Entries
-                    .Where(r => r.FullName.StartsWith(@"Updater/", StringComparison.OrdinalIgnoreCase)))
+                    .Where(x => x.Name != string.Empty) //フォルダは除外
+                    .Where(x => x.FullName.StartsWith(@"Updater/", StringComparison.OrdinalIgnoreCase)))
                 {
                     // ディレクトリが存在しない場合はファイル作成時に例外となる
                     Directory.CreateDirectory(Path.GetDirectoryName(entry.FullName));
