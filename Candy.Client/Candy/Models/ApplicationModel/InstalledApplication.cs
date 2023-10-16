@@ -188,7 +188,7 @@ namespace Candy.Client.Models
                 EnableRaisingEvents = true,
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "Candy.Updater.exe",
+                    FileName = @"Updater\Candy.Updater.exe",
                     Arguments = arguments,
                 },
             };
